@@ -1,5 +1,5 @@
 const initialState = {
-  posts: [],
+  posts: []
 };
 export default (state = initialState, action) => {
   switch (action.type) {
@@ -13,7 +13,7 @@ export default (state = initialState, action) => {
         ...state,
         posts: action.payload
       };
-      case "SEARCH_BY_CATEGORY":
+    case "SEARCH_BY_CATEGORY":
       return {
         ...state,
         posts: action.payload
