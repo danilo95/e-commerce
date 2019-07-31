@@ -38,20 +38,15 @@ export const productById = id => {
 };
 
 
-export const productDetail=(id)=>{
+export const  productDetail = async (id)=>{
 
   const promise1 = BackendApi.get(`/products/${id}/details`);
   const promise2 = BackendApi.get(`/products/${id}/reviews`);
   
-  let response=[];
-  
-   Promise.all([promise1, promise2]).then((values)=> {
-    response.push(values[0].data)
-    response.push(values[1].data)
-    
+ return await Promise.all([promise1, promise2]).then(values=> {
+  return values;
   })
-  
-  return response;
+
 }
 
 

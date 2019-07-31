@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux'; 
 import { SearchItem } from '../actions'; //this is the action for SEARCH the products
 
-
 class SeachBar extends React.Component{
  
   constructor(props) {
@@ -21,9 +20,7 @@ componentDidMount(){
 }
 
 searchHandler(){
-  console.log('entre al button')
   this.props.SearchItem(this.state.value)
- 
 }
 
 render(){ 
