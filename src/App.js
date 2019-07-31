@@ -2,15 +2,19 @@ import React from 'react';
 import SearchBar from './components/SearchBar';
 import NavBar from './components/navvbar';
 import ListOfProducts from './components/ListofProducts';
-function App() {
+
+function App(props) {
   return (
-    <div className="cotainer">  
+    <>
+    
     <div className="header">
-    <NavBar/>
-    <SearchBar/>
-    <ListOfProducts/>
+      <NavBar/>
+      <SearchBar/>
     </div>
+    <div className="cotainer">  
+    {props.children}
     </div>
+    </>
   );
 }
 

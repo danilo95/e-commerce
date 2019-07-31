@@ -13,7 +13,7 @@ width:100%;
   justify-content: center;
   display: none;
   margin-top: 5%;
-  
+  width: 100%;
 }
 #navbar {
   overflow: hidden;
@@ -21,7 +21,11 @@ width:100%;
  position: fixed;
  width: 100%;
 }
-
+a{
+  text-decoration: none;
+  color: #f2f2f2;
+  font-size: 16px;
+}
 #navbar a {
   float: left;
   display: block;
@@ -48,7 +52,7 @@ width:100%;
 }
 .header{
   width:100%;
- 
+  display: flex;
 }
 .searchbar {
   outline: 0;
@@ -141,6 +145,148 @@ h1{
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+.not-found{
+  display: flex;
+    justify-content: center;
+    margin-top: 25px;
+}
+/*single product */
+
+/*-- Product Large Image Tab --*/
+.pro-large-img {}
+.pro-large-img img {
+  width: 100%;
+}
+/*-- Product Thumbnail Image Slider --*/
+.pro-thumb-img-slider {
+  margin: 0 -5px;
+}
+.pro-thumb-img-slider .slick-slide {
+  padding: 0 5px;
+}
+.pro-thumb-img-slider a {
+  display: block;
+}
+.pro-thumb-img-slider a img {
+  width: 100%;
+}
+/*-- Product Thumbnail Image Slider Arrow --*/
+.pro-thumb-img-slider .slick-arrow {
+  background-color: #fff;
+  border: medium none;
+  border-radius: 50%;
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  color: #777777;
+  height: 34px;
+  margin-top: -17px;
+  opacity: 0;
+  padding: 0;
+  position: absolute;
+  top: 50%;
+  width: 34px;
+  z-index: 9;
+}
+.pro-thumb-img-slider .slick-arrow i {
+  font-size: 20px;
+  line-height: 26px;
+}
+.pro-thumb-img-slider .arrow-prev {
+  left: -12px;
+}
+.pro-thumb-img-slider .arrow-next {
+  right: -12px;
+}
+.pro-thumb-img-slider:hover .slick-arrow {
+  opacity: 1;
+}
+.pro-thumb-img-slider .slick-arrow:hover {
+  background-color: #3f3f3f;
+  color: #fff;
+}
+/*-- Product Details --*/
+.product-details {
+  padding-left: 45px;
+  padding-top: 45px;
+}
+.product-details .title {
+  color: #565656;
+  display: block;
+  font-size: 40px;
+  font-weight: 600;
+  margin-bottom: 27px;
+  text-transform: capitalize;
+}
+/*-- Product Price & Ratting --*/
+.price-ratting {
+  margin-bottom: 38px;
+}
+/*-- Price --*/
+.product-details .price {
+  color: #7a7a7a;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+}
+.product-details .price span {
+  display: inline-block;
+  line-height: 18px;
+  margin: 0 10px 0 0;
+  padding: 0;
+}
+.product-details .price .new {}
+.product-details .price .old {
+  color: #999;
+  text-decoration: line-through;
+}
+/*-- Ratting --*/
+.product-details .ratting {}
+.product-details .ratting i {
+  display: block;
+  float: left;
+  font-size: 12px;
+  line-height: 24px;
+  margin-right: 6px;
+}
+.product-details .ratting i.active {
+  color: #ffc741;
+}
+.product-details .ratting span {
+  color: #b0b0b0;
+  display: inline-block;
+  margin-left: 4px;
+}
+/*-- Product Details SubTitle --*/
+.pd-sub-title {
+  color: #5a5a5a;
+  display: block;
+  font-family: "Lato",sans-serif;
+  font-size: 16px;
+  line-height: 12px;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  position: relative;
+}
+.pd-sub-title::before {
+  background-color: #9d9d9d;
+  bottom: 0;
+  content: "";
+  height: 1px;
+  left: 0;
+  position: absolute;
+  width: 30px;
+}
+/*-- Short Description --*/
+.product-details .short-desc {
+  margin-bottom: 20px;
+}
+.product-details .short-desc p {
+  color: #8f8e8e;
+  font-family: "Montserrat",sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 24px;
 }
 
 /* error messages */

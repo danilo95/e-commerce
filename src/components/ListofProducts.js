@@ -1,7 +1,8 @@
 import React from "react";
+import NotFound from './NotFound';
 import { connect } from 'react-redux'; 
 import { fetchPost } from '../actions'; //this is the action for all the products
-
+import { Link } from 'react-router-dom';
 
 import NetworkError from './NetworkError';
 
@@ -22,6 +23,7 @@ class ListOfProducts extends React.Component {
   render(){ 
     return ( 
       <>
+      {this.props.posts.length > 0?
       <div className="products-container">
         {this.props.posts.map((product, index) => { 
 
@@ -32,13 +34,13 @@ class ListOfProducts extends React.Component {
             <h1>{`${product.name}`}</h1>
             <p className="price"><span className="previos-price">{product.discounted_price==0?" ":this.formatNumber(product.price)}</span> {product.discounted_price==0?this.formatNumber(product.price):this.formatNumber(product.discounted_price)}</p>
             <p className="description">{`${product.description}`}</p>
-            <p ><button onClick={()=>this.props.selectedItem(product.product_id)} >View</button></p>
+            <p ><Link to={`/page3/${product.product_id}`}><button >View</button></Link></p>
           </div>
           
           );
         })}
         </div>
-        
+        :<NotFound/>}
       </>
     );
   }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 
 class NavBar extends React.Component{
@@ -16,10 +17,8 @@ showSearchBar =() =>{
     return (
 <>
 <div id="navbar">
-  <a className="active" href="javascript:void(0)">Home</a>
+<Link to="/">Home</Link>
   <a onClick={this.showSearchBar}>Search</a>
-  <a href="#">Login</a>
- 
 </div>
 </>
 

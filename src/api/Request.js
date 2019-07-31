@@ -3,7 +3,7 @@ import { variableDeclaration } from "@babel/types";
 
 export const allProducts = () => {
   let result = BackendApi.get("/products")
-    .then(function(response) {
+    .then((response)=>{
       return response.data.rows;
     })
     .catch(function(error) {
@@ -13,11 +13,9 @@ export const allProducts = () => {
   return result;
 };
 
-
-
-export const SearchProducts = (itemToSearch) => {
+export const SearchProducts = itemToSearch => {
   let result = BackendApi.get(`/products/search?query_string=${itemToSearch}`)
-    .then(function(response) {
+    .then((response)=> {
       return response.data.rows;
     })
     .catch(function(error) {
@@ -26,4 +24,35 @@ export const SearchProducts = (itemToSearch) => {
 
   return result;
 };
+
+export const productById = id => {
+  let result = BackendApi.get(`/products/${id}/details`)
+    .then((response)=> {
+      return response.data.rows;
+    })
+    .catch(function(error) {
+      return [];
+    });
+
+  return result;
+};
+
+
+export const productDetail=(id)=>{
+
+  const promise1 = BackendApi.get(`/products/${id}/details`);
+  const promise2 = BackendApi.get(`/products/${id}/reviews`);
+  
+  let response=[];
+  
+   Promise.all([promise1, promise2]).then((values)=> {
+    response.push(values[0].data)
+    response.push(values[1].data)
+    
+  })
+  
+  return response;
+}
+
+
 
