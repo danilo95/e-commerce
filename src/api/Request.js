@@ -1,5 +1,4 @@
 import BackendApi from "./BackendApi";
-import { variableDeclaration } from "@babel/types";
 
 export const allProducts = () => {
   let result = BackendApi.get("/products")
@@ -25,8 +24,20 @@ export const SearchProducts = itemToSearch => {
   return result;
 };
 
-export const productById = id => {
-  let result = BackendApi.get(`/products/${id}/details`)
+export const categories =() => {
+  let result = BackendApi.get(`/categories`)
+    .then((response)=> {
+      return response.data.rows;
+    })
+    .catch(function(error) {
+      return [];
+    });
+
+  return result;
+};
+
+export const productByCategory = id => {
+  let result = BackendApi.get(`/products/inCategory/${id}`)
     .then((response)=> {
       return response.data.rows;
     })

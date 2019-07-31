@@ -1,7 +1,6 @@
 import React from 'react';
 import SearchBar from './components/SearchBar';
 import NavBar from './components/navvbar';
-import ListOfProducts from './components/ListofProducts';
 
 function App(props) {
   return (

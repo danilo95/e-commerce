@@ -1,5 +1,6 @@
 import React from "react";
 import NotFound from './NotFound';
+import Categories from '../components/categories';
 import { connect } from 'react-redux'; 
 import { fetchPost } from '../actions'; //this is the action for all the products
 import { Link } from 'react-router-dom';
@@ -25,6 +26,7 @@ class ListOfProducts extends React.Component {
       <>
       {this.props.posts.length > 0?
       <div className="products-container">
+        <Categories/>
         {this.props.posts.map((product, index) => { 
 
           return (

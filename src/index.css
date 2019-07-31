@@ -152,6 +152,14 @@ h1{
     justify-content: center;
     margin-top: 25px;
 }
+
+.categories{
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+  width: 100%;
+  margin-top: 20px;
+}
 /*single product */
 
 /*-- Product Large Image Tab --*/
