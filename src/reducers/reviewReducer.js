@@ -1,6 +1,5 @@
 const initialState = {
-  review: [],
-  
+  review: []
 };
 export default (state = initialState, action) => {
   switch (action.type) {

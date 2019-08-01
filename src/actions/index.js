@@ -1,9 +1,11 @@
-import { allProducts } from "../api/Request";
-import { SearchProducts } from "../api/Request";
-import { categories } from "../api/Request";
-import { productByCategory } from "../api/Request";
-import { productDetailById } from "../api/Request";
-import { reviewslById } from "../api/Request";
+import {
+  allProducts,
+  SearchProducts,
+  categories,
+  productByCategory,
+  productDetailById,
+  reviewslById
+} from "../api/Request";
 
 export const fetchPost = () => async dispatch => {
   const response = await allProducts();

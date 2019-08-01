@@ -22,6 +22,9 @@ class SeachBar extends React.Component {
   }
 
   searchHandler() {
+    if (!this.state.value) {
+      return this.props.fetchPost();
+    }
     this.props.SearchItem(this.state.value);
   }
 
@@ -36,7 +39,7 @@ class SeachBar extends React.Component {
             value={this.state.value}
             onChange={this.handleChange}
           />
-          <div className="btn btn-default" onClick={() => this.searchHandler()}>
+          <div className="btn" onClick={() => this.searchHandler()}>
             {" "}
             <i className="fas fa-search"> </i>
             Search{" "}

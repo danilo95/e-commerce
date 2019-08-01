@@ -1,5 +1,6 @@
 const initialState = {
-  posts: []
+  posts: [],
+  postError: false
 };
 export default (state = initialState, action) => {
   switch (action.type) {

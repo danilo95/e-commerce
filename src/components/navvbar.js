@@ -1,29 +1,19 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-
-class NavBar extends React.Component{
-
-showSearchBar =() =>{
-  let flag = document.getElementById("searhcontainer");
-  if (flag.style.display === "none") {
-    flag.style.display = "flex";
-  } else {
-    flag.style.display = "none";
-  }
-
-}
-  render(){
+class NavBar extends React.Component {
+  
+  render() {
     return (
-<>
-<div id="navbar">
-<Link to="/">Home</Link>
-  <a onClick={this.showSearchBar}>Search</a>
-</div>
-</>
-
-  );
-}
+      <>
+        <div id="navbar">
+          <Link to="/">Home</Link>
+          <Link to="/login">Login</Link>
+          <Link to="#"> <i className="fas fa-shopping-cart"></i>Cart</Link>
+        </div>
+      </>
+    );
+  }
 }
 
 export default NavBar;

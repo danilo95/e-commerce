@@ -5,7 +5,7 @@ export const allProducts = () => {
     .then(response => {
       return response.data.rows;
     })
-    .catch(function(error) {
+    .catch(error => {
       return [];
     });
 
@@ -17,7 +17,7 @@ export const SearchProducts = itemToSearch => {
     .then(response => {
       return response.data.rows;
     })
-    .catch(function(error) {
+    .catch(error => {
       return [];
     });
 
@@ -29,8 +29,8 @@ export const categories = () => {
     .then(response => {
       return response.data.rows;
     })
-    .catch(function(error) {
-      return [];
+    .catch(error => {
+      return null;
     });
 
   return result;
@@ -41,7 +41,7 @@ export const productByCategory = id => {
     .then(response => {
       return response.data.rows;
     })
-    .catch(function(error) {
+    .catch(error => {
       return [];
     });
 
@@ -53,7 +53,7 @@ export const productDetailById = id => {
     .then(response => {
       return response.data;
     })
-    .catch(function(error) {
+    .catch(error => {
       return [];
     });
 
@@ -65,7 +65,7 @@ export const reviewslById = id => {
     .then(response => {
       return response.data;
     })
-    .catch(function(error) {
+    .catch(error => {
       return [];
     });
 

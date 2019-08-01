@@ -8,10 +8,9 @@ import reducers from './reducers';
 import thunk from 'redux-thunk';
 
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import Page1 from './pages/Page1';
-import Page2 from './pages/Page2';
-import Page3 from './pages/Page3';
+import MainProduct from './pages/MainProduct';
 import Home from './pages/Home';
+import Login from './pages/login';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -22,9 +21,8 @@ ReactDOM.render(
 <Router>
 <App>
       <Switch>
-        <Route path="/page1" exact component={Page1} />
-        <Route path="/page2" exact component={Page2} />
-        <Route path="/page3/:id" exact component={Page3} />
+        <Route path="/MainProduct/:id" exact component={MainProduct} />
+        <Route path="/login" exact component={Login} />
         <Route path="/" exact component={Home} />
       </Switch>
       </App>
