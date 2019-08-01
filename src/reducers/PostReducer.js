@@ -8,6 +8,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         posts: action.payload
+      };    
+      case "errorFetchPost":
+      return {
+        ...state,
+        postError: action.payload
       };
     case "SEARCH_ITEM":
       return {

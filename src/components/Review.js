@@ -9,7 +9,8 @@ class Review extends React.Component {
   render() {
     return (
       <>
-        {this.props.review.map((reivews, index) => {
+        { 
+          this.props.review.map((reivews, index) => {
           return (
             <div className="comments-container" key={index}>
               <ul id="comments-list" className="comments-list">

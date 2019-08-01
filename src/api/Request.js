@@ -71,3 +71,8 @@ export const reviewslById = id => {
 
   return result;
 };
+
+
+const handleError = (errorHttp) => {
+
+}

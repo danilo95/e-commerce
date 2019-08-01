@@ -121,7 +121,10 @@ input:focus {
   margin-top: 30px;
 }
 .card:hover {
-  cursor: pointer;
+  border : 1px solid grey;   
+}
+.card:hover h1{
+  color:blue;
 }
 
 .price {
