@@ -2,7 +2,7 @@ import BackendApi from "./BackendApi";
 
 export const allProducts = () => {
   let result = BackendApi.get("/products")
-    .then((response)=>{
+    .then(response => {
       return response.data.rows;
     })
     .catch(function(error) {
@@ -14,7 +14,7 @@ export const allProducts = () => {
 
 export const SearchProducts = itemToSearch => {
   let result = BackendApi.get(`/products/search?query_string=${itemToSearch}`)
-    .then((response)=> {
+    .then(response => {
       return response.data.rows;
     })
     .catch(function(error) {
@@ -24,9 +24,9 @@ export const SearchProducts = itemToSearch => {
   return result;
 };
 
-export const categories =() => {
+export const categories = () => {
   let result = BackendApi.get(`/categories`)
-    .then((response)=> {
+    .then(response => {
       return response.data.rows;
     })
     .catch(function(error) {
@@ -38,7 +38,7 @@ export const categories =() => {
 
 export const productByCategory = id => {
   let result = BackendApi.get(`/products/inCategory/${id}`)
-    .then((response)=> {
+    .then(response => {
       return response.data.rows;
     })
     .catch(function(error) {
@@ -48,17 +48,26 @@ export const productByCategory = id => {
   return result;
 };
 
+export const productDetailById = id => {
+  let result = BackendApi.get(`/products/${id}/details`)
+    .then(response => {
+      return response.data;
+    })
+    .catch(function(error) {
+      return [];
+    });
 
-export const  productDetail = async (id)=>{
+  return result;
+};
 
-  const promise1 = BackendApi.get(`/products/${id}/details`);
-  const promise2 = BackendApi.get(`/products/${id}/reviews`);
-  
- return await Promise.all([promise1, promise2]).then(values=> {
-  return values;
-  })
+export const reviewslById = id => {
+  let result = BackendApi.get(`/products/${id}/reviews`)
+    .then(response => {
+      return response.data;
+    })
+    .catch(function(error) {
+      return [];
+    });
 
-}
-
-
-
+  return result;
+};
