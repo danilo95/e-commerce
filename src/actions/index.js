@@ -9,7 +9,11 @@ import {
 
 export const fetchPost = () => async dispatch => {
   const response = await allProducts();
-  dispatch({ type: "fetchPost", payload: response });
+  if(response){
+    dispatch({ type: "fetchPost", payload: response });
+  }else{
+    dispatch({ type: "errorFetchPost", payload: response });
+  }
 };
 
 export const SearchItem = value => async dispatch => {

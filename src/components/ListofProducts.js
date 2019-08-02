@@ -13,9 +13,10 @@ class ListOfProducts extends React.Component {
   }
 
   render() {
+  
     return (
       <>
-        {this.props.posts.length > 0 ? (
+        {(this.props.posts.length > 0 && this.props.postError) ? (
           <div className="products-container">
             <Categories />
             {this.props.posts.map((product, index) => {
@@ -50,7 +51,7 @@ class ListOfProducts extends React.Component {
             })}
           </div>
         ) : (
-          <NotFound />
+          <NotFound status={this.props.posts}/>
         )}
       </>
     );
@@ -59,7 +60,8 @@ class ListOfProducts extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    posts: state.posts.posts
+    posts: state.posts.posts,
+    postError: state.posts.postError
   };
 };
 

@@ -6,7 +6,7 @@ export const allProducts = () => {
       return response.data.rows;
     })
     .catch(error => {
-      return [];
+    return  handleError(error.message)
     });
 
   return result;
@@ -74,5 +74,13 @@ export const reviewslById = id => {
 
 
 const handleError = (errorHttp) => {
+  switch (errorHttp) {
+    case 'Network Error':
+        return 500
+    
+    default:
+      return 404;
+      
 
+  }
 }

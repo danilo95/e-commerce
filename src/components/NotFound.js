@@ -1,10 +1,22 @@
 import React from 'react';
-
-const NotFound=()=>{
-
+let problem;
+const NotFound=(props)=>{
+	switch(props.status){
+	case 500:
+	problem='INTERAL SERVER ERROR'
+	break;
+	case 404:
+			problem='404-Data Not FOUND'
+			break;
+			default:
+					problem='We are Loading.....'
+				break;
+}
+	
   return(
  		<div className="not-found">
-			<h1 >No Data Found</h1>
+	<div><h2>{problem}</h2></div>
+
 		</div>
 
 );

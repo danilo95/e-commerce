@@ -50,11 +50,8 @@ class SeachBar extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return { search: state.search };
-};
 
 export default connect(
-  mapStateToProps,
+  null,
   { SearchItem, fetchPost }
 )(SeachBar);
