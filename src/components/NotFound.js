@@ -1,6 +1,7 @@
 import React from 'react';
 let problem;
-const NotFound=(props)=>{
+const NotFound=(props)=>{ 
+	
 	switch(props.status){
 	case 500:
 	problem='INTERAL SERVER ERROR'
@@ -13,6 +14,7 @@ const NotFound=(props)=>{
 				break;
 }
 	
+
   return(
  		<div className="not-found">
 	<div><h2>{problem}</h2></div>

@@ -18,7 +18,11 @@ export const fetchPost = () => async dispatch => {
 
 export const SearchItem = value => async dispatch => {
   const response = await SearchProducts(value);
+  if(response){
   dispatch({ type: "SEARCH_ITEM", payload: response });
+}else{
+  dispatch({ type: "errorFetchPost", payload: response });
+}
 };
 
 export const categorieList = () => async dispatch => {

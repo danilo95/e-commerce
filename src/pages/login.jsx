@@ -1,8 +1,23 @@
 import React from 'react';
-function Login() {
+import LoginComponent from '../components/loginComponent';
+
+class Login extends React.Component {
+
+
+  
+  componentDidMount() {
+    
+    document.getElementById("searhcontainer").style.display = "none";
+    
+  }
+
+  render() {
   return (
-    <div></div>
+    <div className="logincontainer">
+    <LoginComponent/>
+    </div>
   );
+  }
 }
 
 export default Login;

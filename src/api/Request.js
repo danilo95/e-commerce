@@ -18,8 +18,8 @@ export const SearchProducts = itemToSearch => {
       return response.data.rows;
     })
     .catch(error => {
-      return [];
-    });
+      return  handleError(error.message)
+      });
 
   return result;
 };

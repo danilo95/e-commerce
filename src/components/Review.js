@@ -5,7 +5,6 @@ class Review extends React.Component {
   componentDidMount() {
     this.props.getReviewslById(this.props.id);
   }
-
   render() {
     return (
       <>
@@ -29,12 +28,8 @@ class Review extends React.Component {
                         {reivews.review}
                         <span className="ratting float-right">
                           <br />
-
-                          <i className="fa fa-star active" />
-                          <i className="fa fa-star active" />
-                          <i className="fa fa-star active" />
-                          <i className="fa fa-star active" />
-                          <i className="fa fa-star active" />
+                     {  reivews.rating===1?<i class="fas fa-star"></i>:reivews.rating===2?<><i class="fas fa-star"></i><i class="fas fa-star"></i></>:reivews.rating===3?<><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></>:reivews.rating===4?<><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></>:<><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></>
+}
                         </span>
                       </div>
                     </div>

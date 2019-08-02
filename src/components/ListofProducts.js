@@ -16,10 +16,10 @@ class ListOfProducts extends React.Component {
   
     return (
       <>
-        {(this.props.posts.length > 0 && this.props.postError) ? (
-          <div className="products-container">
+        {(this.props.posts.length > 0 && this.props.postError) ? ( 
+          <div className="products-container"> 
             <Categories />
-            {this.props.posts.map((product, index) => {
+            {this.props.posts.map((product, index) => { console.log(product.discounted_price)
               return (
                 <div className="card" key={index}>
                   <img
@@ -32,11 +32,11 @@ class ListOfProducts extends React.Component {
                   <h1>{`${product.name}`}</h1>
                   <p className="price">
                     <span className="previos-price">
-                      {product.discounted_price == 0
+                      {product.discounted_price === "0.00"
                         ? " "
                         : formatNumber(product.price)}
                     </span>{" "}
-                    {product.discounted_price == 0
+                    {product.discounted_price === "0.00"
                       ? formatNumber(product.price)
                       : formatNumber(product.discounted_price)}
                   </p>

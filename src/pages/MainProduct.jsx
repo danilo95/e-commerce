@@ -4,7 +4,7 @@ import Review from "../components/Review";
 import { singleProductDetail } from "../actions";
 import { formatNumber } from "../formatFunctions/format";
 
-class Page3 extends React.Component {
+class MainProduct extends React.Component {
   componentDidMount() {
     this.props.singleProductDetail(this.props.match.params.id);
     document.getElementById("searhcontainer").style.display = "none";
@@ -31,12 +31,12 @@ class Page3 extends React.Component {
                   <span className="price float-left">
                     <span className="new">
                       {" "}
-                      {product.discounted_price == 0
+                      {product.discounted_price === "0.00"
                         ? formatNumber(product.price)
                         : formatNumber(product.discounted_price)}
                     </span>
                     <span className="old">
-                      {product.discounted_price == 0
+                      {product.discounted_price === "0.00"
                         ? " "
                         : formatNumber(product.price)}
                     </span>
@@ -70,4 +70,4 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   { singleProductDetail }
-)(Page3);
+)(MainProduct);
