@@ -76,7 +76,6 @@ const handleError = errorHttp => {
   switch (errorHttp) {
     case "Network Error":
       return 500;
-
     default:
       return 404;
   }

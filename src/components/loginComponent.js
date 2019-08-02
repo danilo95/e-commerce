@@ -6,7 +6,7 @@ const LoginComponent = () => {
       <form className="log-in">
         <h1 className="title">Hello!</h1>
         <input className="input" type="text" autoFocus placeholder="Email" />
-        <input className="input" type="password" placeholder="Password" />
+        <input className="input" type="password" placeholder="Password" autoComplete="false"/>
         <button className="input submit" type="submit">
           Log In
         </button>

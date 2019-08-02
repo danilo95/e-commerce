@@ -28,7 +28,7 @@ class Review extends React.Component {
                         {reivews.review}
                         <span className="ratting float-right">
                           <br />
-                     {  reivews.rating===1?<i class="fas fa-star"></i>:reivews.rating===2?<><i class="fas fa-star"></i><i class="fas fa-star"></i></>:reivews.rating===3?<><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></>:reivews.rating===4?<><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></>:<><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></>
+                     {  reivews.rating===1?<i className="fas fa-star"></i>:reivews.rating===2?<><i className="fas fa-star"></i><i className="fas fa-star"></i></>:reivews.rating===3?<><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i></>:reivews.rating===4?<><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i></>:<><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i></>
 }
                         </span>
                       </div>

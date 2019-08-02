@@ -6,7 +6,7 @@ const NotFound = props => {
   } else if (props.loading) {
     problem = (
       <>
-        <i class="fa fa-spinner fa-spin" /> "Im loading....."
+        <i className="fa fa-spinner fa-spin" /> "Im loading....."
       </>
     );
   } else {
