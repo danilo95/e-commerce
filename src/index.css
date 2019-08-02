@@ -129,7 +129,7 @@ input:focus {
 }
 
 .price {
-  color: grey;
+  color: black;
   font-size: 25px;
   margin-top: -20px;
 }
@@ -142,6 +142,7 @@ input:focus {
 .previos-price {
   text-decoration: line-through;
   font-size: 18px;
+  color:grey;
 }
 .card button {
   border: none;
@@ -186,7 +187,7 @@ i {
 .not-found {
   display: flex;
   justify-content: center;
-  margin-top: 25px;
+  margin-top: 35px;
 
 }
 select {

@@ -1,25 +1,24 @@
 import React from "react";
 import NotFound from "./NotFound";
 import { formatNumber } from "../formatFunctions/format";
-
 import Categories from "../components/categories";
 import { connect } from "react-redux";
-import { fetchPost } from "../actions";
+import { fetchPost, loadingPost } from "../actions";
 import { Link } from "react-router-dom";
 
 class ListOfProducts extends React.Component {
   componentDidMount() {
+    this.props.loadingPost();
     this.props.fetchPost();
   }
 
   render() {
-  
     return (
       <>
-        {(this.props.posts.length > 0 && this.props.postError) ? ( 
-          <div className="products-container"> 
+        {this.props.posts.length > 0 && this.props.postError ? (
+          <div className="products-container">
             <Categories />
-            {this.props.posts.map((product, index) => { console.log(product.discounted_price)
+            {this.props.posts.map((product, index) => {
               return (
                 <div className="card" key={index}>
                   <img
@@ -51,7 +50,7 @@ class ListOfProducts extends React.Component {
             })}
           </div>
         ) : (
-          <NotFound status={this.props.posts}/>
+          <NotFound status={this.props.posts} loading={this.props.postLoading}/>
         )}
       </>
     );
@@ -61,11 +60,12 @@ class ListOfProducts extends React.Component {
 const mapStateToProps = state => {
   return {
     posts: state.posts.posts,
-    postError: state.posts.postError
+    postError: state.posts.postError,
+    postLoading: state.posts.postLoading
   };
 };
 
 export default connect(
   mapStateToProps,
-  { fetchPost }
+  { fetchPost, loadingPost }
 )(ListOfProducts);

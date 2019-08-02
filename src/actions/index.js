@@ -16,6 +16,14 @@ export const fetchPost = () => async dispatch => {
   }
 };
 
+export const loadingPost = () => {
+  
+  return { type: "isLoading", payload: true };
+  
+};
+
+
+
 export const SearchItem = value => async dispatch => {
   const response = await SearchProducts(value);
   if(response){

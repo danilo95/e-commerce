@@ -1,6 +1,7 @@
 const initialState = {
   posts: [],
   postError: false,
+  postLoading:false
 };
 export default (state = initialState, action) => { 
   switch (action.type) {
@@ -9,11 +10,17 @@ export default (state = initialState, action) => {
         ...state,
         posts: action.payload,
         postError: true,
+        postLoading:false
       };    
       case "errorFetchPost": 
       return {
         ...state,
         postError: action.payload
+      };
+      case "isLoading": 
+      return {
+        ...state,
+        postLoading: action.payload
       };
     case "SEARCH_ITEM":
       return {

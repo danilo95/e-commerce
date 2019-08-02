@@ -6,7 +6,7 @@ export const allProducts = () => {
       return response.data.rows;
     })
     .catch(error => {
-    return  handleError(error.message)
+      return handleError(error.message);
     });
 
   return result;
@@ -18,8 +18,8 @@ export const SearchProducts = itemToSearch => {
       return response.data.rows;
     })
     .catch(error => {
-      return  handleError(error.message)
-      });
+      return handleError(error.message);
+    });
 
   return result;
 };
@@ -72,15 +72,12 @@ export const reviewslById = id => {
   return result;
 };
 
-
-const handleError = (errorHttp) => {
+const handleError = errorHttp => {
   switch (errorHttp) {
-    case 'Network Error':
-        return 500
-    
+    case "Network Error":
+      return 500;
+
     default:
       return 404;
-      
-
   }
-}
+};

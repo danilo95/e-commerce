@@ -20,7 +20,7 @@ class Review extends React.Component {
                         <h6 className="comment-name by-author">
                           {reivews.name}
                         </h6>
-                        <span>Posted on: {reivews.created_on}</span>
+                        <span>Posted on: {new Date(reivews.created_on).toDateString()}</span>
                         <i className="fa fa-reply" />
                         <i className="fa fa-heart" />
                       </div>
