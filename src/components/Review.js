@@ -8,8 +8,7 @@ class Review extends React.Component {
   render() {
     return (
       <>
-        { 
-          this.props.review.map((reivews, index) => {
+        {this.props.review.map((reivews, index) => {
           return (
             <div className="comments-container" key={index}>
               <ul id="comments-list" className="comments-list">
@@ -20,7 +19,10 @@ class Review extends React.Component {
                         <h6 className="comment-name by-author">
                           {reivews.name}
                         </h6>
-                        <span>Posted on: {new Date(reivews.created_on).toDateString()}</span>
+                        <span>
+                          Posted on:{" "}
+                          {new Date(reivews.created_on).toDateString()}
+                        </span>
                         <i className="fa fa-reply" />
                         <i className="fa fa-heart" />
                       </div>
@@ -28,8 +30,35 @@ class Review extends React.Component {
                         {reivews.review}
                         <span className="ratting float-right">
                           <br />
-                     {  reivews.rating===1?<i className="fas fa-star"></i>:reivews.rating===2?<><i className="fas fa-star"></i><i className="fas fa-star"></i></>:reivews.rating===3?<><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i></>:reivews.rating===4?<><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i></>:<><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i></>
-}
+                          {reivews.rating === 1 ? (
+                            <i className="fas fa-star" />
+                          ) : reivews.rating === 2 ? (
+                            <>
+                              <i className="fas fa-star" />
+                              <i className="fas fa-star" />
+                            </>
+                          ) : reivews.rating === 3 ? (
+                            <>
+                              <i className="fas fa-star" />
+                              <i className="fas fa-star" />
+                              <i className="fas fa-star" />
+                            </>
+                          ) : reivews.rating === 4 ? (
+                            <>
+                              <i className="fas fa-star" />
+                              <i className="fas fa-star" />
+                              <i className="fas fa-star" />
+                              <i className="fas fa-star" />
+                            </>
+                          ) : (
+                            <>
+                              <i className="fas fa-star" />
+                              <i className="fas fa-star" />
+                              <i className="fas fa-star" />
+                              <i className="fas fa-star" />
+                              <i className="fas fa-star" />
+                            </>
+                          )}
                         </span>
                       </div>
                     </div>
