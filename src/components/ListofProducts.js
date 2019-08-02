@@ -50,7 +50,10 @@ class ListOfProducts extends React.Component {
             })}
           </div>
         ) : (
-          <NotFound status={this.props.posts} loading={this.props.postLoading}/>
+          <NotFound
+            status={this.props.posts}
+            loading={this.props.postLoading}
+          />
         )}
       </>
     );

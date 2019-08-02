@@ -1,23 +1,23 @@
 const initialState = {
   posts: [],
   postError: false,
-  postLoading:false
+  postLoading: false
 };
-export default (state = initialState, action) => { 
+export default (state = initialState, action) => {
   switch (action.type) {
-    case "fetchPost":
+    case "FETCH_POST":
       return {
         ...state,
         posts: action.payload,
         postError: true,
-        postLoading:false
-      };    
-      case "errorFetchPost": 
+        postLoading: false
+      };
+    case "ERROR_FETCH_POST":
       return {
         ...state,
         postError: action.payload
       };
-      case "isLoading": 
+    case "IS_LOADING":
       return {
         ...state,
         postLoading: action.payload

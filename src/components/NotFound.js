@@ -4,7 +4,11 @@ const NotFound = props => {
   if (props.status.length === 0 && !props.loading) {
     problem = "NO MATCH FOUND";
   } else if (props.loading) {
-    problem =<><i class="fa fa-spinner fa-spin" ></i> "Im loading....."</>;
+    problem = (
+      <>
+        <i class="fa fa-spinner fa-spin" /> "Im loading....."
+      </>
+    );
   } else {
     switch (props.status) {
       case 500:

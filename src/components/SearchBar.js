@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { SearchItem, fetchPost } from "../actions"; //this is the action for SEARCH the products
+import { SearchItem, fetchPost } from "../actions";
 
 class SeachBar extends React.Component {
   constructor(props) {
@@ -49,7 +49,6 @@ class SeachBar extends React.Component {
     );
   }
 }
-
 
 export default connect(
   null,

@@ -122,10 +122,10 @@ input:focus {
   margin-top: 30px;
 }
 .card:hover {
-  border : 1px solid grey;   
+  border: 1px solid grey;
 }
-.card:hover h1{
-  color:blue;
+.card:hover h1 {
+  color: blue;
 }
 
 .price {
@@ -142,7 +142,7 @@ input:focus {
 .previos-price {
   text-decoration: line-through;
   font-size: 18px;
-  color:grey;
+  color: grey;
 }
 .card button {
   border: none;
@@ -188,7 +188,6 @@ i {
   display: flex;
   justify-content: center;
   margin-top: 35px;
-
 }
 select {
   width: 20%;
@@ -210,9 +209,6 @@ select {
 }
 /*single product */
 
-/*-- Product Large Image Tab --*/
-.pro-large-img {
-}
 .pro-large-img img {
   width: 100%;
 }
@@ -293,8 +289,7 @@ select {
   margin: 0 10px 0 0;
   padding: 0;
 }
-.product-details .price .new {
-}
+
 .product-details .price .old {
   color: #999;
   text-decoration: line-through;
@@ -304,8 +299,7 @@ select {
   margin-top: 20px;
 }
 /*-- Ratting --*/
-.product-details .ratting {
-}
+
 .product-details .ratting i {
   display: block;
   float: left;
@@ -521,7 +515,7 @@ select {
   color: #03658c;
 }
 .comment-box .comment-name.by-author:after {
-  content: "buyer";
+  content: "customer";
   background: #03658c;
   color: #fff;
   font-size: 12px;
@@ -594,17 +588,14 @@ select {
     margin-top: 40px;
   }
 }
- 
-  @media (max-width: 400px) {
-    .absolutebutton {
-      width: 100%;
-    margin-left: 0px;
-    }
-    select {
-      width: 100%;
-    margin-left: 0px;
-    }
-    
 
+@media (max-width: 400px) {
+  .absolutebutton {
+    width: 100%;
+    margin-left: 0px;
+  }
+  select {
+    width: 100%;
+    margin-left: 0px;
+  }
 }
-

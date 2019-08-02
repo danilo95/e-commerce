@@ -9,28 +9,24 @@ import {
 
 export const fetchPost = () => async dispatch => {
   const response = await allProducts();
-  if(response){
-    dispatch({ type: "fetchPost", payload: response });
-  }else{
-    dispatch({ type: "errorFetchPost", payload: response });
+  if (response) {
+    dispatch({ type: "FETCH_POST", payload: response });
+  } else {
+    dispatch({ type: "ERROR_FETCH_POST", payload: response });
   }
 };
 
 export const loadingPost = () => {
-  
-  return { type: "isLoading", payload: true };
-  
+  return { type: "IS_LOADING", payload: true };
 };
-
-
 
 export const SearchItem = value => async dispatch => {
   const response = await SearchProducts(value);
-  if(response){
-  dispatch({ type: "SEARCH_ITEM", payload: response });
-}else{
-  dispatch({ type: "errorFetchPost", payload: response });
-}
+  if (response) {
+    dispatch({ type: "SEARCH_ITEM", payload: response });
+  } else {
+    dispatch({ type: "ERROR_FETCH_POST", payload: response });
+  }
 };
 
 export const categorieList = () => async dispatch => {
