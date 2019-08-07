@@ -8,9 +8,9 @@ class shoppingCart extends React.Component {
 
   render() {
     return (
-      <>
+     
         <Cart/>
-     </>
+     
     );
   }
 }

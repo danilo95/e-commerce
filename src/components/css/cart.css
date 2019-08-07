@@ -1,3 +1,150 @@
 .cart{
-
+margin-top: 10%;
+width: 100%;
+}
+td{
+  white-space: nowrap;
+}
+#order-table div {
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%
+}
+#order-table > div {
+  border-top: 1px dashed #e0e0e0;
+  margin: 10px 0;
+}
+#order-table small {
+  width: 100%;
+  padding: 10px 0 0 0;
+}
+#order-table div div:nth-child(1) {
+  float: left;
+  padding: 0 10px;
+  height: 90px;
+  order: 2;
+}
+#order-table div div:nth-child(2) {
+  width: 70px;
+  height: 70px;
+  /*border: 1px dashed #e0e0e0;*/
+  background: #ffffff;
+  float: left;
+  order: 3;
+}
+#order-table div div:nth-child(2) img {
+  width: 70px;
+  height: 70px;
+  border: none;
+}
+#order-table div div:nth-child(3) {
+  padding: 10px 30px 0 20px;
+  width: 100%;
+  flex-wrap: wrap;
+  order: 1;
+  float: left;
+}
+#order-table div div:nth-child(3) a {
+  font-size: 18px;
+}
+#order-table div div:nth-child(4) {
+  flex-grow: 1;
+  padding: 10px;
+  order: 4;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 600;
+}
+#order-table div div:nth-child(4):after {
+  content: "(1 шт.)";
+  padding-left: 5px;
+  color: #666;
+  font-size: 13px;
+  font-weight: normal;
+}
+#order-table div div:nth-child(5) {
+  flex-grow: 1;
+  padding: 10px;
+  float: left;
+  order: 5;
+  justify-content: center;
+}
+#order-table div div:nth-child(5):before {
+  content: "Кол-во:";
+  padding-right: 5px;
+  color: #666;
+}
+#order-table div div:nth-child(5):after {
+  content: "шт.";
+  padding-left: 5px;
+  color: #666;
+}
+#order-table div div:nth-child(6) {
+  flex-grow: 1;
+  padding: 10px;
+  float: left;
+  order: 6;
+  justify-content: flex-end;
+  font-size: 16px;
+  font-weight: 600;
+}
+#order-table div div:nth-child(6):before {
+  content: "Сумма:";
+  padding-right: 5px;
+  color: #666;
+  font-size: 13px;
+  font-weight: normal;
+}
+#order-table div div:nth-child(7) {
+  position: absolute;
+  margin: 10px;
+  right: 0;
+  order: 7;
+  flex: none;
+  align-self: normal;
+}
+#order-table div div:nth-child(7) input {
+  display: none;
+}
+.result-summ {
+  background: #1d97ca;
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+  justify-content: flex-end !important;
+  border: none !important;
+}
+.result-summ div:nth-child(1) {
+  flex-grow: 1 !important;
+  order: 1 !important;
+  width: auto !important;
+  height: auto !important;
+  display: block !important;
+  text-align: right;
+  padding: 10px !important;
+}
+.ulightbox{
+  width: 100%;
+ 
+}
+.title_product{
+  color:black;
+}
+.result-summ div:nth-child(2) {
+  display: none !important;
+}
+.result-summ div:nth-child(3) {
+  padding: 10px !important;
+  order: 1 !important;
+  width: auto !important;
+}
+.result-summ div:nth-child(3) {
+  flex-grow: inherit !important;
+  order: 2 !important;
 }

@@ -92,7 +92,6 @@ export const addToCart =(id,product,quantity)=> {
     attributes: quantity
   })
     .then(response => {
-      console.log(response.data)
       return response.data;
     })
     .catch(error => {
@@ -102,8 +101,18 @@ export const addToCart =(id,product,quantity)=> {
   return result;
 };
 
+export const GetCartList =(id)=> {
+  let result = BackendApi.get(`/shoppingcart/${id}`)
+    .then(response => {
+     
+      return response.data;
+    })
+    .catch(error => {
+      return [];
+    });
 
-
+  return result;
+};
 
 
 const handleError = errorHttp => {

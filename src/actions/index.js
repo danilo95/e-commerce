@@ -6,7 +6,8 @@ import {
   productDetailById,
   reviewslById,
   getUniqueIdCart,
-  addToCart
+  addToCart,
+  GetCartList
 } from "../api/Request";
 
 export const fetchPost = () => async dispatch => {
@@ -63,4 +64,8 @@ export const getUniqueCartId =()=> async dispatch => {
 export const addNewProductToTheCart =(id,product,quantity)=> async dispatch => {
   const response = await addToCart(id,product,quantity);
   dispatch({ type: "ADD_NEW_PRODUCT_TO_THE_CART", payload: response });
+};
+export const GetProductsOfCart =(id)=> async dispatch => {
+  const response = await GetCartList(id);
+  dispatch({ type: "GET_PRODUCTS_OF_CART", payload: response });
 };

@@ -23,7 +23,7 @@ ReactDOM.render(
           <Route path="/MainProduct/:id" exact component={MainProduct} />
           <Route path="/login" exact component={Login} />
           <Route path="/" exact component={Home} />
-          <Route path="CartPage" exact component={CartPage} />
+          <Route path="/CartPage" exact component={CartPage} />
         </Switch>
       </App>
     </Router>

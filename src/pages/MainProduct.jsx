@@ -6,19 +6,21 @@ import { formatNumber } from "../formatFunctions/format";
 
 class MainProduct extends React.Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.cartId=JSON.parse(localStorage.getItem("cart"))
-   
+    this.state = {
+      id : this.props.match.params.id
+  }
   }
 
   componentDidMount() {
-    this.props.singleProductDetail(this.props.match.params.id);
+    this.props.singleProductDetail(this.state.id);
     document.getElementById("searhcontainer").style.display = "none";
   }
-  AddProductHandler()
+  AddProductHandler=()=>
   {
-    this.props.addNewProductToTheCart(this.cartId,this.props.match.params.id,1)
+    this.props.addNewProductToTheCart(this.cartId,this.state.id,1)
   }
 
   render() {

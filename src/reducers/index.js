@@ -11,5 +11,5 @@ export default combineReducers({
   singlePost: singlePostReducer,
   review: reviewReducer,
   uniqueCartId: uniqueCartIdReducer,
-  new_product: addProductToCartReducer
+ cart: addProductToCartReducer
 });
