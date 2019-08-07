@@ -72,6 +72,40 @@ export const reviewslById = id => {
   return result;
 };
 
+
+export const getUniqueIdCart =()=> {
+  let result = BackendApi.get(`/shoppingcart/generateUniqueId`)
+    .then(response => {
+      return response.data.cart_id;
+    })
+    .catch(error => {
+      return [];
+    });
+
+  return result;
+};
+
+export const addToCart =(id,product,quantity)=> {
+  let result = BackendApi.post(`/shoppingcart/add`, {
+    cart_id: id,
+    product_id: product,
+    attributes: quantity
+  })
+    .then(response => {
+      console.log(response.data)
+      return response.data;
+    })
+    .catch(error => {
+      return [];
+    });
+
+  return result;
+};
+
+
+
+
+
 const handleError = errorHttp => {
   switch (errorHttp) {
     case "Network Error":

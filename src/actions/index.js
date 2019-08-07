@@ -4,7 +4,9 @@ import {
   categories,
   productByCategory,
   productDetailById,
-  reviewslById
+  reviewslById,
+  getUniqueIdCart,
+  addToCart
 } from "../api/Request";
 
 export const fetchPost = () => async dispatch => {
@@ -47,4 +49,18 @@ export const singleProductDetail = id => async dispatch => {
 export const getReviewslById = id => async dispatch => {
   const response = await reviewslById(id);
   dispatch({ type: "REVIEWS", payload: response });
+};
+
+export const getUniqueCartId =()=> async dispatch => {
+  const response = await getUniqueIdCart();
+  if (localStorage.getItem("cart") === null) {
+    localStorage.setItem("cart", JSON.stringify(response));
+  }
+  dispatch({ type: "UNIQUE_CART_ID", payload: response });
+};
+
+
+export const addNewProductToTheCart =(id,product,quantity)=> async dispatch => {
+  const response = await addToCart(id,product,quantity);
+  dispatch({ type: "ADD_NEW_PRODUCT_TO_THE_CART", payload: response });
 };

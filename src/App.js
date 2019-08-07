@@ -2,6 +2,7 @@ import React from 'react';
 import SearchBar from './components/SearchBar';
 import NavBar from './components/navvbar';
 
+
 function App(props) {
   return (
     <>

@@ -1,13 +1,24 @@
 import React from "react";
 import { connect } from "react-redux";
 import Review from "../components/Review";
-import { singleProductDetail } from "../actions";
+import { singleProductDetail,addNewProductToTheCart } from "../actions";
 import { formatNumber } from "../formatFunctions/format";
 
 class MainProduct extends React.Component {
+
+  constructor() {
+    super();
+    this.cartId=JSON.parse(localStorage.getItem("cart"))
+   
+  }
+
   componentDidMount() {
     this.props.singleProductDetail(this.props.match.params.id);
     document.getElementById("searhcontainer").style.display = "none";
+  }
+  AddProductHandler()
+  {
+    this.props.addNewProductToTheCart(this.cartId,this.props.match.params.id,1)
   }
 
   render() {
@@ -41,7 +52,7 @@ class MainProduct extends React.Component {
                         : formatNumber(product.price)}
                     </span>
                   </span>
-                  <button className="btn-cart">
+                  <button className="btn-cart" onClick={this.AddProductHandler}>
                     <i className="fas fa-shopping-cart">Add to Cart</i>
                   </button>
                 </div>
@@ -69,5 +80,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { singleProductDetail }
+  { singleProductDetail,addNewProductToTheCart }
 )(MainProduct);
