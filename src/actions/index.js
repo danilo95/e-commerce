@@ -10,7 +10,9 @@ import {
   GetCartList,
   GetTotalToPay,
   DeleteItem,
-  ClearCart
+  ClearCart,
+  shipping,
+  shippingPrices
 } from "../api/Request";
 
 export const fetchPost = () => async dispatch => {
@@ -81,11 +83,21 @@ export const GetTotal = id => async dispatch => {
 };
 
 export const DeleteItemCart = id => async dispatch => {
-  const response = await DeleteItem(id);
-  dispatch({ type: "DELETE_ITEM", payload: response });
+  await DeleteItem(id);
+  dispatch({ type: "DELETE_ITEM", payload: id });
 };
 
 export const ClearActualCart = id => async dispatch => {
   const response = await ClearCart(id);
   dispatch({ type: "CLEAR_CART", payload: response });
+};
+
+export const getShipping = () => async dispatch => {
+  const response = await shipping();
+  dispatch({ type: "GET_SHIPPING", payload: response });
+};
+
+export const getShippingPrices = (id) => async dispatch => {
+  const response = await shippingPrices(id);
+  dispatch({ type: "GET_SHIPPING_PRICES", payload: response });
 };

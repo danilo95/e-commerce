@@ -13,9 +13,10 @@ class Cart extends React.Component {
   constructor(props) {
     super(props);
     this.cartId = JSON.parse(localStorage.getItem("cart"));
+    this.state = {alert: " "};
   }
   componentDidMount() {
-    this.props.GetProductsOfCart(this.cartId);
+    this.props.GetProductsOfCart(this.cartId)
     this.props.GetTotal(this.cartId);
   }
   deleteItem = e => {
@@ -23,7 +24,9 @@ class Cart extends React.Component {
   };
 
   clearCart = () => {
-    this.props.ClearActualCart(this.cartId);
+    this.props.ClearActualCart(this.cartId).then(
+      this.setState({alert: "The cart is empty, buy a awesome t shirt before you left the site :)"})
+    )
   };
   render() {
     return (
@@ -32,7 +35,7 @@ class Cart extends React.Component {
           <button className="clear_btn" onClick={this.clearCart}>
             Clear Cart
           </button>
-         <h1>{this.props.alert}</h1>
+         <h2>{this.state.alert}</h2>
           <hr />
           <div>
             <table
@@ -59,10 +62,10 @@ class Cart extends React.Component {
                 </tr>
               </thead>
               <tbody>
-                {this.props.cartList.map((cartItem, index) => {
+                {this.props.cartList.map((cartItem, index) => { 
                   return (
-                    <tr>
-                      <td align="center">{cartItem.item_id}</td>
+                    <tr key={index}>
+                      <td align="center" >{cartItem.item_id}</td>
                       <td align="center" width="1%">
                         <img
                           alt={cartItem.image}
@@ -126,7 +129,6 @@ const mapStateToProps = state => {
     cartList: state.cart.cart,
     total: state.cart.total,
     tax: state.cart.tax,
-    alert: state.cart.alert
   };
 };
 

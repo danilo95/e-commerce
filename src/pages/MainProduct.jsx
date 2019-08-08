@@ -1,27 +1,29 @@
 import React from "react";
 import { connect } from "react-redux";
 import Review from "../components/Review";
-import { singleProductDetail,addNewProductToTheCart } from "../actions";
+import Shipping from "../components/Shipping";
+import { singleProductDetail, addNewProductToTheCart } from "../actions";
 import { formatNumber } from "../formatFunctions/format";
 
 class MainProduct extends React.Component {
-
   constructor(props) {
     super(props);
-    this.cartId=JSON.parse(localStorage.getItem("cart"))
+    this.cartId = JSON.parse(localStorage.getItem("cart"));
     this.state = {
-      id : this.props.match.params.id
-  }
+      id: this.props.match.params.id,
+      message: " "
+    };
   }
 
   componentDidMount() {
     this.props.singleProductDetail(this.state.id);
     document.getElementById("searhcontainer").style.display = "none";
   }
-  AddProductHandler=()=>
-  {
-    this.props.addNewProductToTheCart(this.cartId,this.state.id,1)
-  }
+  AddProductHandler = () => {
+    this.props
+      .addNewProductToTheCart(this.cartId, this.state.id, 1)
+      .then(this.setState({ message: "Item Added" }));
+  };
 
   render() {
     return (
@@ -54,10 +56,11 @@ class MainProduct extends React.Component {
                         : formatNumber(product.price)}
                     </span>
                   </span>
+                  <Shipping/>
                   <button className="btn-cart" onClick={this.AddProductHandler}>
                     <i className="fas fa-shopping-cart">Add to Cart</i>
                   </button>
-                  <div>{this.props.message}</div>
+                  <div>{this.state.message}</div>
                 </div>
 
                 <div className="short-desc section">
@@ -77,12 +80,11 @@ class MainProduct extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    singlePost: state.singlePost.singlePost,
-    message: state.cart.message,
+    singlePost: state.singlePost.singlePost
   };
 };
 
 export default connect(
   mapStateToProps,
-  { singleProductDetail,addNewProductToTheCart }
+  { singleProductDetail, addNewProductToTheCart }
 )(MainProduct);

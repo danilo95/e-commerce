@@ -130,7 +130,6 @@ export const GetTotalToPay =(id)=> {
 export const DeleteItem =(id)=> {
   let result = BackendApi.delete(`/shoppingcart/removeProduct/${id}`)
     .then(response => {
-      
       return [];
     })
     .catch(error => {
@@ -154,7 +153,29 @@ export const ClearCart =(id)=> {
   return result;
 };
 
+export const shipping = () => {
+  let result = BackendApi.get(`/shipping/regions`)
+    .then(response => {
+      return response.data;
+    })
+    .catch(error => {
+      return null;
+    });
 
+  return result;
+};
+
+export const shippingPrices = (id) => {
+  let result = BackendApi.get(`/shipping/regions/${id}`)
+    .then(response => {
+      return response.data;
+    })
+    .catch(error => {
+      return null;
+    });
+
+  return result;
+};
 
 
 const handleError = errorHttp => {

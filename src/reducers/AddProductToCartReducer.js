@@ -1,11 +1,9 @@
 const initialState = {
   new_Product: [],
-  message:"",
-  alert: "The cart is empty, buy a t-shirt :(",
   tax: 0,
-  items:0,
-  cart:[],
-  total:0,
+  items: 0,
+  cart: [],
+  total: 0,
   deleteItem: null
 };
 export default (state = initialState, action) => {
@@ -15,9 +13,7 @@ export default (state = initialState, action) => {
         ...state,
         new_Product: action.payload,
         items: action.payload.length,
-        tax: 8.50,
-        message: "Item added",
-        alert: " "
+        tax: 8.5
       };
     case "GET_PRODUCTS_OF_CART":
       return {
@@ -25,20 +21,29 @@ export default (state = initialState, action) => {
         cart: action.payload,
         items: action.payload.length
       };
-      case "GET_TOTAL":
+    case "GET_TOTAL":
       return {
         ...state,
         total: action.payload
       };
-      case "DELETE_ITEM":
+    case "DELETE_ITEM":
+      let newarray = state.cart.filter(item => {
+        if (item.item_id !== parseInt(action.payload)) {
+          return item;
+        }
+      });
+      let newtotal = newarray.reduce((a, b) => {
+        return parseFloat(a.subtotal) + parseFloat(b.subtotal);
+      });
+
       return {
         ...state,
         deleteItem: action.payload,
         items: action.payload.length,
-        total: action.payload,
-        cart: action.payload
+        total: newtotal,
+        cart: newarray
       };
-      case "CLEAR_CART":
+    case "CLEAR_CART":
       return {
         ...state,
         new_Product: action.payload,
@@ -46,8 +51,7 @@ export default (state = initialState, action) => {
         total: action.payload,
         cart: action.payload,
         deleteItem: action.payload,
-        alert: "The cart is empty, buy a t-shirt :(",
-        tax:0
+        tax: 0
       };
     default:
       return state;
