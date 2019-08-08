@@ -7,7 +7,8 @@ import {
   reviewslById,
   getUniqueIdCart,
   addToCart,
-  GetCartList
+  GetCartList,
+  GetTotalToPay
 } from "../api/Request";
 
 export const fetchPost = () => async dispatch => {
@@ -68,4 +69,8 @@ export const addNewProductToTheCart =(id,product,quantity)=> async dispatch => {
 export const GetProductsOfCart =(id)=> async dispatch => {
   const response = await GetCartList(id);
   dispatch({ type: "GET_PRODUCTS_OF_CART", payload: response });
+};
+export const GetTotal =(id)=> async dispatch => {
+  const response = await GetTotalToPay(id);
+  dispatch({ type: "GET_TOTAL", payload: response });
 };

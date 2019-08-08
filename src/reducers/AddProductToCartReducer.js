@@ -1,6 +1,7 @@
 const initialState = {
   new_Product: [],
-  cart:[]
+  cart:[],
+  total:0
 };
 export default (state = initialState, action) => {
   switch (action.type) {
@@ -14,7 +15,11 @@ export default (state = initialState, action) => {
         ...state,
         cart: action.payload
       };
-
+      case "GET_TOTAL":
+      return {
+        ...state,
+        total: action.payload
+      };
     default:
       return state;
   }

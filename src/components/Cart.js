@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { GetProductsOfCart } from "../actions";
+import { GetProductsOfCart,GetTotal } from "../actions";
 import { formatNumber } from "../formatFunctions/format";
 import { Link } from "react-router-dom";
 import "./css/cart.css";
@@ -11,43 +11,50 @@ class Cart extends React.Component {
   }
   componentDidMount() {
     this.props.GetProductsOfCart(this.cartId);
+    this.props.GetTotal(this.cartId);
   }
 
   render() {
-    return (
+    return ( 
       <>
         <div className="cart">
-          <div id="order-table">
-            <table cellSpacing="2" cellPadding="3" width="100%" border="0">
+          <h1>total: {formatNumber(this.props.total)}</h1><hr></hr>
+          <div >
+            <table cellSpacing="2" cellPadding="3" width="100%" border="0" align="center">
               <thead>
-                <tr className="order-head">
+                <tr >
                   <th className="order-item-nom" width="1%">
                     ID
                   </th>
-                  <th className="order-head-img">image</th>
-                  <th className="order-head-name">Description</th>
-                  <th className="order-head-cnt" width="1%">
+                  <th >image</th>
+                  <th >Name</th>
+                  <th  width="1%">
                     quantity
                   </th>
                   <th className="order-head-sum" width="1%">
                     Subtotal
+                  </th>
+                  <th className="order-head-sum" width="1%">
+                    Delete
                   </th>
                 </tr>
               </thead>
               <tbody>
                 {this.props.cartList.map((cartItem, index) => {
                   return (
-                    <tr id="order-item-2274" className="order-item">
-                      <td className="order-item-nom">{cartItem.item_id}</td>
-                      <td className="order-item-img" align="center" width="1%">
+                    <tr >
+                      <td align="center">{cartItem.item_id}</td>
+                      <td  align="center" width="1%">
                         <img
-                          className="ulightbox"
+                          className="ulightbox" atl={
+                            cartItem.image
+                          }
                           src={`https://backendapi.turing.com/images/products/${
                             cartItem.image
                           }`}
                         />
                       </td>
-                      <td className="order-item-name">
+                      <td align="center" width="1%">
                         <Link
                           to={`/MainProduct/${cartItem.product_id}`}
                           target="_blank"
@@ -55,12 +62,13 @@ class Cart extends React.Component {
                           <span className="title_product">{cartItem.name}</span>
                         </Link>
                       </td>
-                      <td width="1%" className="order-item-cnt" align="center">
+                      <td width="1%"  align="center">
                         {cartItem.quantity}
                       </td>
-                      <td width="1%" className="order-item-sum">
+                      <td width="1%" align="center">
                         {formatNumber(cartItem.subtotal)}
                       </td>
+                      <td align="center"><i class="fa fa-trash fa-5  faa-pulse animated-hover" aria-hidden="true"></i></td>
                     </tr>
                   );
                 })}
@@ -75,11 +83,12 @@ class Cart extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    cartList: state.cart.cart
+    cartList: state.cart.cart,
+    total: state.cart.total
   };
 };
 
 export default connect(
   mapStateToProps,
-  { GetProductsOfCart }
+  { GetProductsOfCart,GetTotal }
 )(Cart);

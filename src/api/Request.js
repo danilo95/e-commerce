@@ -114,6 +114,22 @@ export const GetCartList =(id)=> {
   return result;
 };
 
+export const GetTotalToPay =(id)=> {
+  let result = BackendApi.get(`/shoppingcart/totalAmount/${id}`)
+    .then(response => {
+      return response.data.total_amount;
+    })
+    .catch(error => {
+      return null;
+    });
+
+  return result;
+};
+
+
+
+
+
 
 const handleError = errorHttp => {
   switch (errorHttp) {
