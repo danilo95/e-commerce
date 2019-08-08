@@ -113,6 +113,27 @@ input:focus {
   cursor: pointer;
 }
 
+/*clear button */
+.clear_btn {
+  outline: 0;
+  width: 10%;
+  height: 50px;
+  font-family: "Droid Sans Mono", sans-serif;
+  font-size: 16px;
+  color: #fff;
+  background-color: #0d912a;
+  border-radius: 5px;
+  text-align: center;
+  line-height: 50px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+.clear_btn:hover {
+  cursor: pointer;
+  background-color: #1a5c28;
+}
+
+
 /* main product style */
 .products-container {
   width: 100%;
@@ -581,6 +602,9 @@ select {
   .searhcontainer {
     margin-top: 52px;
   }
+  .categories {
+    margin-top: 40px;
+  }
 }
 
 @media (max-width: 1000px) {
@@ -589,11 +613,6 @@ select {
   }
   .categories {
     margin-top: 30px;
-  }
-}
-@media (max-width: 600px) {
-  .categories {
-    margin-top: 40px;
   }
 }
 
@@ -607,6 +626,7 @@ select {
     margin-left: 0px;
   }
 }
+
 
 /* animation */
 @-webkit-keyframes pulse {

@@ -57,6 +57,7 @@ class MainProduct extends React.Component {
                   <button className="btn-cart" onClick={this.AddProductHandler}>
                     <i className="fas fa-shopping-cart">Add to Cart</i>
                   </button>
+                  <div>{this.props.message}</div>
                 </div>
 
                 <div className="short-desc section">
@@ -76,7 +77,8 @@ class MainProduct extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    singlePost: state.singlePost.singlePost
+    singlePost: state.singlePost.singlePost,
+    message: state.cart.message,
   };
 };
 

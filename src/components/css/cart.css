@@ -1,5 +1,5 @@
 .cart{
-margin-top: 10%;
+margin-top: 5%;
 width: 60%;
 
 }
@@ -36,4 +36,11 @@ td{
 tr:hover {
   background-color:#f5f5f5;
   font-weight: bold;
+}
+
+/* responsive */
+@media (max-width: 700px) {
+  .cart{
+    width: 100%;
+  }
 }

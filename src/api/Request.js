@@ -127,6 +127,32 @@ export const GetTotalToPay =(id)=> {
 };
 
 
+export const DeleteItem =(id)=> {
+  let result = BackendApi.delete(`/shoppingcart/removeProduct/${id}`)
+    .then(response => {
+      
+      return [];
+    })
+    .catch(error => {
+    
+      return null;
+    });
+
+  return result;
+};
+
+export const ClearCart =(id)=> {
+  let result = BackendApi.delete(`/shoppingcart/empty/${id}`)
+    .then(response => {
+      return response.data;
+    })
+    .catch(error => {
+     
+      return null;
+    });
+
+  return result;
+};
 
 
 

@@ -1,6 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
-import { GetProductsOfCart,GetTotal } from "../actions";
+import {
+  GetProductsOfCart,
+  GetTotal,
+  DeleteItemCart,
+  ClearActualCart
+} from "../actions";
 import { formatNumber } from "../formatFunctions/format";
 import { Link } from "react-router-dom";
 import "./css/cart.css";
@@ -13,24 +18,38 @@ class Cart extends React.Component {
     this.props.GetProductsOfCart(this.cartId);
     this.props.GetTotal(this.cartId);
   }
+  deleteItem = e => {
+    this.props.DeleteItemCart(e.target.dataset.id);
+  };
 
+  clearCart = () => {
+    this.props.ClearActualCart(this.cartId);
+  };
   render() {
-    return ( 
+    return (
       <>
         <div className="cart">
-          <h1>total: {formatNumber(this.props.total)}</h1><hr></hr>
-          <div >
-            <table cellSpacing="2" cellPadding="3" width="100%" border="0" align="center">
+          <button className="clear_btn" onClick={this.clearCart}>
+            Clear Cart
+          </button>
+         <h1>{this.props.alert}</h1>
+          <hr />
+          <div>
+            <table
+              cellSpacing="2"
+              cellPadding="3"
+              width="100%"
+              border="0"
+              align="center"
+            >
               <thead>
-                <tr >
+                <tr>
                   <th className="order-item-nom" width="1%">
                     ID
                   </th>
-                  <th >image</th>
-                  <th >Name</th>
-                  <th  width="1%">
-                    quantity
-                  </th>
+                  <th>image</th>
+                  <th>Name</th>
+                  <th width="1%">quantity</th>
                   <th className="order-head-sum" width="1%">
                     Subtotal
                   </th>
@@ -42,13 +61,12 @@ class Cart extends React.Component {
               <tbody>
                 {this.props.cartList.map((cartItem, index) => {
                   return (
-                    <tr >
+                    <tr>
                       <td align="center">{cartItem.item_id}</td>
-                      <td  align="center" width="1%">
+                      <td align="center" width="1%">
                         <img
-                          className="ulightbox" atl={
-                            cartItem.image
-                          }
+                          alt={cartItem.image}
+                          className="ulightbox"
                           src={`https://backendapi.turing.com/images/products/${
                             cartItem.image
                           }`}
@@ -62,16 +80,38 @@ class Cart extends React.Component {
                           <span className="title_product">{cartItem.name}</span>
                         </Link>
                       </td>
-                      <td width="1%"  align="center">
+                      <td width="1%" align="center">
                         {cartItem.quantity}
                       </td>
                       <td width="1%" align="center">
                         {formatNumber(cartItem.subtotal)}
                       </td>
-                      <td align="center"><i class="fa fa-trash fa-5  faa-pulse animated-hover" aria-hidden="true"></i></td>
+                      <td align="center">
+                        <span>
+                          <i
+                            onClick={this.deleteItem}
+                            data-id={cartItem.item_id}
+                            className="fa fa-trash fa-5  faa-pulse animated-hover"
+                            aria-hidden="true"
+                          />
+                        </span>
+                      </td>
                     </tr>
                   );
                 })}
+                <tr>
+                  <td align="center" colSpan="5">
+                    <strong>Taxes:</strong>
+                  </td>
+                  <td>{formatNumber(this.props.tax)}</td>
+                </tr>
+                <tr>
+                  <td align="center" colSpan="5">
+                    <strong>Total:</strong>
+                  </td>
+                  <td>{formatNumber(this.props.total)
+                  }</td>
+                </tr>
               </tbody>
             </table>
           </div>
@@ -84,11 +124,13 @@ class Cart extends React.Component {
 const mapStateToProps = state => {
   return {
     cartList: state.cart.cart,
-    total: state.cart.total
+    total: state.cart.total,
+    tax: state.cart.tax,
+    alert: state.cart.alert
   };
 };
 
 export default connect(
   mapStateToProps,
-  { GetProductsOfCart,GetTotal }
+  { GetProductsOfCart, GetTotal, DeleteItemCart, ClearActualCart }
 )(Cart);

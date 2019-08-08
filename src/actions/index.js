@@ -8,7 +8,9 @@ import {
   getUniqueIdCart,
   addToCart,
   GetCartList,
-  GetTotalToPay
+  GetTotalToPay,
+  DeleteItem,
+  ClearCart
 } from "../api/Request";
 
 export const fetchPost = () => async dispatch => {
@@ -53,7 +55,7 @@ export const getReviewslById = id => async dispatch => {
   dispatch({ type: "REVIEWS", payload: response });
 };
 
-export const getUniqueCartId =()=> async dispatch => {
+export const getUniqueCartId = () => async dispatch => {
   const response = await getUniqueIdCart();
   if (localStorage.getItem("cart") === null) {
     localStorage.setItem("cart", JSON.stringify(response));
@@ -61,16 +63,29 @@ export const getUniqueCartId =()=> async dispatch => {
   dispatch({ type: "UNIQUE_CART_ID", payload: response });
 };
 
-
-export const addNewProductToTheCart =(id,product,quantity)=> async dispatch => {
-  const response = await addToCart(id,product,quantity);
+export const addNewProductToTheCart = (
+  id,
+  product,
+  quantity
+) => async dispatch => {
+  const response = await addToCart(id, product, quantity);
   dispatch({ type: "ADD_NEW_PRODUCT_TO_THE_CART", payload: response });
 };
-export const GetProductsOfCart =(id)=> async dispatch => {
+export const GetProductsOfCart = id => async dispatch => {
   const response = await GetCartList(id);
   dispatch({ type: "GET_PRODUCTS_OF_CART", payload: response });
 };
-export const GetTotal =(id)=> async dispatch => {
+export const GetTotal = id => async dispatch => {
   const response = await GetTotalToPay(id);
   dispatch({ type: "GET_TOTAL", payload: response });
+};
+
+export const DeleteItemCart = id => async dispatch => {
+  const response = await DeleteItem(id);
+  dispatch({ type: "DELETE_ITEM", payload: response });
+};
+
+export const ClearActualCart = id => async dispatch => {
+  const response = await ClearCart(id);
+  dispatch({ type: "CLEAR_CART", payload: response });
 };
