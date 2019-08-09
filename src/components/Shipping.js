@@ -11,6 +11,7 @@ class Shipping extends React.Component {
 
   componentDidMount() {
     this.props.getShipping();
+    this.props.getShippingPrices(1);
   }
 
   handleChange=(event)=> {
