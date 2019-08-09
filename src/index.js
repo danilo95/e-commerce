@@ -11,6 +11,7 @@ import MainProduct from "./pages/MainProduct";
 import Home from "./pages/Home";
 import Login from "./pages/login";
 import CartPage from "./pages/CartPage";
+import NoMatch from "./pages/NoMatch";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -24,6 +25,7 @@ ReactDOM.render(
           <Route path="/login" exact component={Login} />
           <Route path="/" exact component={Home} />
           <Route path="/CartPage" exact component={CartPage} />
+          <Route component={NoMatch}/>
         </Switch>
       </App>
     </Router>

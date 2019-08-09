@@ -8,38 +8,39 @@ import {
 } from "../actions";
 import { formatNumber } from "../formatFunctions/format";
 import { Link } from "react-router-dom";
-import Modal from "../components/modal";
 import "./css/cart.css";
 class Cart extends React.Component {
   constructor(props) {
     super(props);
     this.cartId = JSON.parse(localStorage.getItem("cart"));
-    this.state = {alert: "The cart is empty, buy a awesome t shirt before you left the site :) ", tax:0.06};
-    
+    this.state = {
+      alert:
+        "The cart is empty, buy a awesome t shirt before you left the site :) ",
+      tax: 0.06
+    };
   }
   componentDidMount() {
-    this.props.GetProductsOfCart(this.cartId)
+    this.props.GetProductsOfCart(this.cartId);
     this.props.GetTotal(this.cartId);
   }
-  
+
   deleteItem = e => {
     this.props.DeleteItemCart(e.target.dataset.id);
   };
 
   clearCart = () => {
-    this.props.ClearActualCart(this.cartId)
-    
+    this.props.ClearActualCart(this.cartId);
   };
 
-  conditionalRender(){
-    if(this.props.cartList.length>0){ 
+  conditionalRender() {
+    if (this.props.cartList.length > 0) {
       return (
         <>
           <div className="cart">
             <button className="clear_btn" onClick={this.clearCart}>
               Clear Cart
             </button>
-            <button className="clear_btn">
+            <button className="clear_btn" onClick={this.showModal}>
               Order now!!
             </button>
             <hr />
@@ -53,12 +54,12 @@ class Cart extends React.Component {
               >
                 <thead>
                   <tr>
-                    <th className="order-item-nom" width="1%">
+                    <th className="order-item-nom">
                       ID
                     </th>
                     <th>image</th>
                     <th>Name</th>
-                    <th width="1%">quantity</th>
+                    <th>quantity</th>
                     <th className="order-head-sum" width="1%">
                       Subtotal
                     </th>
@@ -68,12 +69,13 @@ class Cart extends React.Component {
                   </tr>
                 </thead>
                 <tbody>
-                  {this.props.cartList.map((cartItem, index) => { 
-                    
+                  {this.props.cartList.map((cartItem, index) => {
                     return (
                       <tr key={index}>
-                        <td align="center" >{cartItem.item_id}</td>
-                        <td align="center" width="1%">
+                        <td data-label="ID" align="center">
+                          {cartItem.item_id}
+                        </td>
+                        <td data-label="Image" align="center" width="1%">
                           <img
                             alt={cartItem.image}
                             className="ulightbox"
@@ -82,21 +84,23 @@ class Cart extends React.Component {
                             }`}
                           />
                         </td>
-                        <td align="center" width="1%">
+                        <td data-label="Name" align="center">
                           <Link
                             to={`/MainProduct/${cartItem.product_id}`}
                             target="_blank"
                           >
-                            <span className="title_product">{cartItem.name}</span>
+                            <span className="title_product">
+                              {cartItem.name}
+                            </span>
                           </Link>
                         </td>
-                        <td width="1%" align="center">
+                        <td align="center" data-label="Quantity">
                           {cartItem.quantity}
                         </td>
-                        <td width="1%" align="center">
+                        <td align="center" data-label="Subtotal">
                           {formatNumber(cartItem.subtotal)}
                         </td>
-                        <td align="center">
+                        <td align="center" data-label="Delete">
                           <span>
                             <i
                               onClick={this.deleteItem}
@@ -113,39 +117,49 @@ class Cart extends React.Component {
                     <td align="center" colSpan="5">
                       <strong>Taxes:</strong>
                     </td>
-                    <td>{formatNumber(parseFloat(this.props.total)*parseFloat(this.state.tax))}</td>
+                    <td>
+                      {formatNumber(
+                        parseFloat(this.props.total) *
+                          parseFloat(this.state.tax)
+                      )}
+                    </td>
                   </tr>
                   <tr>
                     <td align="center" colSpan="5">
                       <strong>Subtotal:</strong>
                     </td>
-                    <td>{formatNumber(this.props.total)
-                    }</td>
+                    <td>{formatNumber(this.props.total)}</td>
                   </tr>
                   <tr>
                     <td align="center" colSpan="5">
                       <strong>Total:</strong>
                     </td>
-                    <td>{formatNumber(this.props.total)
-                    }</td>
+                    <td>
+                      {formatNumber(
+                        parseFloat(this.props.total) *
+                          parseFloat(this.state.tax) +
+                          parseFloat(this.props.total)
+                      )}
+                    </td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </div>
-          
+          }
         </>
       );
-    }else{
-      return <div className="cart"><h2>{this.state.alert}</h2></div>
+    } else {
+      return (
+        <div className="cart">
+          <h2>{this.state.alert}</h2>
+        </div>
+      );
     }
   }
 
-  render() { 
-    return(
-    this.conditionalRender()
-   
-    );
+  render() {
+    return this.conditionalRender();
   }
 }
 

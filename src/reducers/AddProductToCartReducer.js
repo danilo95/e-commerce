@@ -31,6 +31,7 @@ export default (state = initialState, action) => {
           newtotal=parseFloat(newtotal)+parseFloat(item.subtotal);
           return item;
         }
+        
       });
       return {
         ...state,
