@@ -52,6 +52,7 @@ class Cart extends React.Component {
   addHandler = e => {
     let newvalue = parseInt(e.target.dataset.value) + 1;
     this.props.updateQuantityProduct(e.target.dataset.id, newvalue);
+    this.props.GetTotal(this.cartId)
   };
   lessHandler = e => {
     if(e.target.dataset.value==="1"){
@@ -59,6 +60,7 @@ class Cart extends React.Component {
     }else{
     let newvalue = e.target.dataset.value - 1;
     this.props.updateQuantityProduct(e.target.dataset.id, newvalue);
+    this.props.GetTotal(this.cartId)
   }
   };
   conditionalRender() {
