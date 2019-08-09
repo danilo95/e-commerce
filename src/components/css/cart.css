@@ -1,8 +1,17 @@
 .cart{
 margin-top: 5%;
 width: 60%;
-
 }
+.control:hover{
+
+cursor: pointer; 
+color:green;
+}
+.control_less:hover{
+
+  cursor: pointer; 
+  color:red;
+  }
 td{
   white-space: nowrap;
 }

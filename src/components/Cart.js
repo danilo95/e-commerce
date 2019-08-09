@@ -4,8 +4,11 @@ import {
   GetProductsOfCart,
   GetTotal,
   DeleteItemCart,
-  ClearActualCart
+  ClearActualCart,
+  loadingPost,
+  updateQuantityProduct
 } from "../actions";
+import NotFound from "./NotFound";
 import { formatNumber } from "../formatFunctions/format";
 import { Link } from "react-router-dom";
 import Modal from "../components/modal";
@@ -18,12 +21,17 @@ class Cart extends React.Component {
       alert:
         "The cart is empty, buy a awesome t shirt before you left the site :) ",
       tax: 0.06,
-      showModal: false
+      showModal: false,
+      deleteAlert: " ",
+      icon: " "
     };
   }
   componentDidMount() {
     this.props.GetProductsOfCart(this.cartId);
     this.props.GetTotal(this.cartId);
+    this.props.loadingPost();
+    document.getElementById("searhcontainer").style.display = "none";
+    
   }
   handlerModal = () => {
     this.setState({ showModal: true });
@@ -34,17 +42,33 @@ class Cart extends React.Component {
 
   deleteItem = e => {
     this.props.DeleteItemCart(e.target.dataset.id);
+    this.setState({ deleteAlert: "the Item was Deleted" });
+    this.setState({ icon: "fas fa-times-circle" });
   };
 
   clearCart = () => {
     this.props.ClearActualCart(this.cartId);
   };
-
+  addHandler = e => {
+    let newvalue = parseInt(e.target.dataset.value) + 1;
+    this.props.updateQuantityProduct(e.target.dataset.id, newvalue);
+  };
+  lessHandler = e => {
+    if(e.target.dataset.value==="1"){
+     this.props.DeleteItemCart(e.target.dataset.id);
+    }else{
+    let newvalue = e.target.dataset.value - 1;
+    this.props.updateQuantityProduct(e.target.dataset.id, newvalue);
+  }
+  };
   conditionalRender() {
     if (this.props.cartList.length > 0) {
       return (
         <>
           <div className="cart">
+            <h3>
+              {this.state.deleteAlert} <i className={this.state.icon} />
+            </h3>
             <button className="clear_btn" onClick={this.clearCart}>
               Clear Cart
             </button>
@@ -101,7 +125,19 @@ class Cart extends React.Component {
                           </Link>
                         </td>
                         <td align="center" data-label="Quantity">
-                          {cartItem.quantity}
+                          <i
+                            className="fas fa-minus-circle control_less"
+                            onClick={this.lessHandler}
+                            data-id={cartItem.item_id}
+                            data-value={cartItem.quantity}
+                          />{" "}
+                          {cartItem.quantity}{" "}
+                          <i
+                            className="fas fa-plus-circle control"
+                            onClick={this.addHandler}
+                            data-id={cartItem.item_id}
+                            data-value={cartItem.quantity}
+                          />
                         </td>
                         <td align="center" data-label="Subtotal">
                           {formatNumber(cartItem.subtotal)}
@@ -162,6 +198,13 @@ class Cart extends React.Component {
           }
         </>
       );
+    } else if (this.props.postLoading) {
+      return (
+        <NotFound
+          status={this.props.cartList}
+          loading={this.props.postLoading}
+        />
+      );
     } else {
       return (
         <div className="cart">
@@ -179,11 +222,19 @@ class Cart extends React.Component {
 const mapStateToProps = state => {
   return {
     cartList: state.cart.cart,
-    total: state.cart.total
+    total: state.cart.total,
+    postLoading: state.cart.postLoading
   };
 };
 
 export default connect(
   mapStateToProps,
-  { GetProductsOfCart, GetTotal, DeleteItemCart, ClearActualCart }
+  {
+    GetProductsOfCart,
+    GetTotal,
+    DeleteItemCart,
+    ClearActualCart,
+    loadingPost,
+    updateQuantityProduct
+  }
 )(Cart);

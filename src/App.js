@@ -6,7 +6,6 @@ import NavBar from './components/navvbar';
 function App(props) {
   return (
     <>
-    
     <div className="header">
       <NavBar/>
       <SearchBar/>

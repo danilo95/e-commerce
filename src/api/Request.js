@@ -177,6 +177,20 @@ export const shippingPrices = (id) => {
   return result;
 };
 
+export const updateQuantity = (id,newQuantity) => {
+  let result = BackendApi.put(`/shoppingcart/update/${id}`, {
+    item_id: id,
+    quantity:newQuantity
+  })
+    .then(response => {
+      return response.data;
+    })
+    .catch(error => {
+      return null;
+    });
+
+  return result;
+};
 
 const handleError = errorHttp => {
   switch (errorHttp) {

@@ -19,7 +19,7 @@ const store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)));
 ReactDOM.render(
   <Provider store={store}>
     <Router>
-      <App>
+      <App> 
         <Switch>
           <Route path="/MainProduct/:id" exact component={MainProduct} />
           <Route path="/login" exact component={Login} />

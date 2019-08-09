@@ -3,6 +3,7 @@ const initialState = {
   items: 0,
   cart: [],
   total: 0,
+  postLoading: false,
   deleteItem: null
 };
 export default (state = initialState, action) => {
@@ -17,7 +18,8 @@ export default (state = initialState, action) => {
       return {
         ...state,
         cart: action.payload,
-        items: action.payload.length
+        items: action.payload.length,
+        postLoading: false
       };
     case "GET_TOTAL":
       return {
@@ -47,6 +49,17 @@ export default (state = initialState, action) => {
         total: 0,
         cart: action.payload,
         deleteItem: action.payload
+      };
+      case "IS_LOADING":
+      return {
+        ...state,
+        postLoading: action.payload
+      };
+      case "UPDATE_QUANTITY":
+      return {
+        ...state,
+        cart: action.payload,
+        items: action.payload.length
       };
     default:
       return state;

@@ -12,7 +12,8 @@ import {
   DeleteItem,
   ClearCart,
   shipping,
-  shippingPrices
+  shippingPrices,
+  updateQuantity
 } from "../api/Request";
 
 export const fetchPost = () => async dispatch => {
@@ -100,4 +101,9 @@ export const getShipping = () => async dispatch => {
 export const getShippingPrices = id => async dispatch => {
   const response = await shippingPrices(id);
   dispatch({ type: "GET_SHIPPING_PRICES", payload: response });
+};
+
+export const updateQuantityProduct = (id, quantity) => async dispatch => {
+  const response = await updateQuantity(id, quantity);
+  dispatch({ type: "UPDATE_QUANTITY", payload: response });
 };
