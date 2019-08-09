@@ -11,7 +11,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         new_Product: action.payload,
-        items: action.payload.length,
+        items: action.payload.length
       };
     case "GET_PRODUCTS_OF_CART":
       return {
@@ -25,13 +25,12 @@ export default (state = initialState, action) => {
         total: action.payload
       };
     case "DELETE_ITEM":
-      let newtotal=0;
+      let newtotal = 0;
       let newarray = state.cart.filter(item => {
         if (item.item_id !== parseInt(action.payload)) {
-          newtotal=parseFloat(newtotal)+parseFloat(item.subtotal);
+          newtotal = parseFloat(newtotal) + parseFloat(item.subtotal);
           return item;
         }
-        
       });
       return {
         ...state,
@@ -47,7 +46,7 @@ export default (state = initialState, action) => {
         items: action.payload.length,
         total: 0,
         cart: action.payload,
-        deleteItem: action.payload,
+        deleteItem: action.payload
       };
     default:
       return state;

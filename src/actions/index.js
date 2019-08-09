@@ -97,7 +97,7 @@ export const getShipping = () => async dispatch => {
   dispatch({ type: "GET_SHIPPING", payload: response });
 };
 
-export const getShippingPrices = (id) => async dispatch => {
+export const getShippingPrices = id => async dispatch => {
   const response = await shippingPrices(id);
   dispatch({ type: "GET_SHIPPING_PRICES", payload: response });
 };

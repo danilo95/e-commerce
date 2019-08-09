@@ -9,7 +9,7 @@ export default (state = initialState, action) => {
         ...state,
         shipping: action.payload
       };
-      case "GET_SHIPPING_PRICES":
+    case "GET_SHIPPING_PRICES":
       return {
         ...state,
         prices: action.payload

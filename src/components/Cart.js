@@ -8,6 +8,7 @@ import {
 } from "../actions";
 import { formatNumber } from "../formatFunctions/format";
 import { Link } from "react-router-dom";
+import Modal from "../components/modal";
 import "./css/cart.css";
 class Cart extends React.Component {
   constructor(props) {
@@ -16,13 +17,20 @@ class Cart extends React.Component {
     this.state = {
       alert:
         "The cart is empty, buy a awesome t shirt before you left the site :) ",
-      tax: 0.06
+      tax: 0.06,
+      showModal: false
     };
   }
   componentDidMount() {
     this.props.GetProductsOfCart(this.cartId);
     this.props.GetTotal(this.cartId);
   }
+  handlerModal = () => {
+    this.setState({ showModal: true });
+  };
+  closeModal = () => {
+    this.setState({ showModal: false });
+  };
 
   deleteItem = e => {
     this.props.DeleteItemCart(e.target.dataset.id);
@@ -40,7 +48,7 @@ class Cart extends React.Component {
             <button className="clear_btn" onClick={this.clearCart}>
               Clear Cart
             </button>
-            <button className="clear_btn" onClick={this.showModal}>
+            <button className="clear_btn" onClick={this.handlerModal}>
               Order now!!
             </button>
             <hr />
@@ -54,9 +62,7 @@ class Cart extends React.Component {
               >
                 <thead>
                   <tr>
-                    <th className="order-item-nom">
-                      ID
-                    </th>
+                    <th className="order-item-nom">ID</th>
                     <th>image</th>
                     <th>Name</th>
                     <th>quantity</th>
@@ -146,6 +152,13 @@ class Cart extends React.Component {
               </table>
             </div>
           </div>
+          {this.state.showModal ? (
+            <Modal
+              title="Success!"
+              content="Your Buy was completed"
+              onDismiss={() => this.closeModal}
+            />
+          ) : null}
           }
         </>
       );

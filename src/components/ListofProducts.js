@@ -3,20 +3,20 @@ import NotFound from "./NotFound";
 import { formatNumber } from "../formatFunctions/format";
 import Categories from "../components/categories";
 import { connect } from "react-redux";
-import { fetchPost, loadingPost,getUniqueCartId } from "../actions";
+import { fetchPost, loadingPost, getUniqueCartId } from "../actions";
 import { Link } from "react-router-dom";
 
 class ListOfProducts extends React.Component {
   componentDidMount() {
     this.props.loadingPost();
     this.props.fetchPost();
-    this.props.getUniqueCartId()
+    this.props.getUniqueCartId();
   }
 
-  render() { 
+  render() {
     return (
       <>
-        {this.props.posts.length > 0 && this.props.postError ? ( 
+        {this.props.posts.length > 0 && this.props.postError ? (
           <div className="products-container">
             <Categories />
             {this.props.posts.map((product, index) => {
@@ -72,5 +72,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { fetchPost, loadingPost,getUniqueCartId }
+  { fetchPost, loadingPost, getUniqueCartId }
 )(ListOfProducts);
