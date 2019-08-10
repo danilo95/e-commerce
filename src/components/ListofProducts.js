@@ -10,7 +10,10 @@ class ListOfProducts extends React.Component {
   componentDidMount() {
     this.props.loadingPost();
     this.props.fetchPost();
-    this.props.getUniqueCartId();
+    if (localStorage.getItem("cart") === null) {
+      this.props.getUniqueCartId();
+    }
+    
   }
 
   render() {
