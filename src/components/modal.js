@@ -5,17 +5,17 @@ const Modal = props => {
   return ReactDom.createPortal(
     <div onClick={props.onDismiss(false)} className="modal">
       <div onClick={e => e.stopPropagation()} className="modal-content">
-        <span onClick={props.onDismiss(false)} class="close">
+        <span onClick={props.onDismiss(false)} className="close">
           &times;
         </span>
         <h1>
           <i className="far fa-check-circle" />
           {props.title}
         </h1>
-        <div class="content">
+        <div className="content">
           <p>{props.content}</p>
         </div>
-        <div class="actions">{props.actions}</div>
+        <div className="actions">{props.actions}</div>
       </div>
     </div>,
     document.querySelector("#modal")

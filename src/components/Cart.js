@@ -31,8 +31,8 @@ class Cart extends React.Component {
     this.props.GetTotal(this.cartId);
     this.props.loadingPost();
     document.getElementById("searhcontainer").style.display = "none";
-    
   }
+
   handlerModal = () => {
     this.setState({ showModal: true });
   };
@@ -45,23 +45,24 @@ class Cart extends React.Component {
     this.setState({ deleteAlert: "the Item was Deleted" });
     this.setState({ icon: "fas fa-times-circle" });
   };
-
+  handlerDeleteAlert = () => {
+    this.setState({ deleteAlert: " " });
+    this.setState({ icon: " " });
+  };
   clearCart = () => {
     this.props.ClearActualCart(this.cartId);
   };
   addHandler = e => {
     let newvalue = parseInt(e.target.dataset.value) + 1;
     this.props.updateQuantityProduct(e.target.dataset.id, newvalue);
-    this.props.GetTotal(this.cartId)
   };
   lessHandler = e => {
-    if(e.target.dataset.value==="1"){
-     this.props.DeleteItemCart(e.target.dataset.id);
-    }else{
-    let newvalue = e.target.dataset.value - 1;
-    this.props.updateQuantityProduct(e.target.dataset.id, newvalue);
-    this.props.GetTotal(this.cartId)
-  }
+    if (e.target.dataset.value === "1") {
+      this.props.DeleteItemCart(e.target.dataset.id);
+    } else {
+      let newvalue = e.target.dataset.value - 1;
+      this.props.updateQuantityProduct(e.target.dataset.id, newvalue);
+    }
   };
   conditionalRender() {
     if (this.props.cartList.length > 0) {
@@ -69,7 +70,11 @@ class Cart extends React.Component {
         <>
           <div className="cart">
             <h3>
-              {this.state.deleteAlert} <i className={this.state.icon} />
+              {this.state.deleteAlert}{" "}
+              <i
+                className={this.state.icon}
+                onClick={this.handlerDeleteAlert}
+              />
             </h3>
             <button className="clear_btn" onClick={this.clearCart}>
               Clear Cart

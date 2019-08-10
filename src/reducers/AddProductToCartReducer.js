@@ -50,16 +50,23 @@ export default (state = initialState, action) => {
         cart: action.payload,
         deleteItem: action.payload
       };
-      case "IS_LOADING":
+    case "IS_LOADING":
       return {
         ...state,
         postLoading: action.payload
       };
-      case "UPDATE_QUANTITY":
+    case "UPDATE_QUANTITY":
+      let total = 0;
+      action.payload.map(item => {
+        const oldItemValue = state.cart.find(cartitem => cartitem.item_id === item.item_id);
+        item.image = oldItemValue.image;
+        return (total = parseInt(item.subtotal) + total);
+      });
       return {
         ...state,
         cart: action.payload,
-        items: action.payload.length
+        items: action.payload.length,
+        total: total
       };
     default:
       return state;
